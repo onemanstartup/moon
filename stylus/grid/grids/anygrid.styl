@@ -1,0 +1,113 @@
+@import "../setup"
+// function
+$gutter = 5
+$gridCols = 12
+$containerCols = 5
+$maxColWidth = 100 / $containerCols
+$w = $containerCols / $gridCols * 100
+$x = ((($w * $gutter / $maxColWidth) / $gridCols)  + $w) * 100
+$z = unit( 100 - numround($x,0) / 100 , '%' )
+
+spanblock(number)
+  width        unit(((number - 1) * 20 + (20 - $gutter)) , '%')
+  margin-right unit(- ((number - 1) * 20 + (20 - $gutter)) , '%')
+  padding 0% unit($gutter/2 , '%')
+
+col(number)
+  unit((number - 1) * 20, '%')
+
+column(number)  
+  left col(number)
+
+span()
+  display inline
+  float left
+  position relative
+
+.g-12
+    padding-right $z
+    position relative
+
+* html .g-12
+    padding-right 0
+    margin-right $z
+
+.g-12, .g-row
+    zoom 1
+
+.g-12:before, .g-12:after, .g-row:before, .g-row:after
+    clear both
+    content ''
+    display block
+  
+.g-first
+    clear left
+.g-restore
+  
+.g-span-1, .g-span-2, .g-span-3, .g-span-4, .g-span-5, .g-span-6, .g-span-7, .g-span-8, .g-span-9, .g-span-10, .g-span-11, .g-span-12, .g-span-13, .g-span-14
+  span()
+
+.g-span-1
+  spanblock(1)
+
+.g-span-2
+  spanblock(2)
+
+.g-span-3
+  spanblock(3)
+
+.g-span-4
+  spanblock(4)
+  
+.g-span-5
+  spanblock(5)
+
+.g-span-6
+  spanblock(6)
+
+.g-span-7
+  spanblock(7)
+
+.g-span-8
+  spanblock(8)
+  
+  
+.g-span-9
+  spanblock(9)
+
+.g-span-10
+  spanblock(10)
+
+.g-span-11
+  spanblock(11)
+
+.g-span-12
+  spanblock(12)
+
+.g-col-1
+  column(1)
+.g-col-2
+  column(2)
+.g-col-3
+  column(3)
+.g-col-4
+  column(4)
+.g-col-5
+  column(5)
+.g-col-6
+  column(6)
+.g-col-7
+  column(7)
+.g-col-8
+  column(8)
+.g-col-9
+  column(9)
+.g-col-10
+  column(10)
+.g-col-11
+  column(11)
+.g-col-12
+  column(12)
+  
+.g-first
+  clear left

@@ -1,0 +1,118 @@
+// Functions to commit 
+
+
+
+// CSS Reset
+@import "stylus/default/normalize/index"
+
+*{box-sizing: border-box;}
+// Mixins & Functions
+@import "stylus/mixins/queries"
+@import "stylus/mixins/setup"
+// Variables & Themes
+@import "stylus/colors/default"
+@import "stylus/typography/themes/default"
+@import "stylus/typography/setup"
+@import "stylus/typography/code"
+@import "stylus/typography/themes/default"
+@import "stylus/forms/setup"
+@import "stylus/forms/themes/default"
+
+// Grid system and page structure
+@import "stylus/grid/setup"
+@import "stylus/grid/grids/anygrid"
+
+
+// @import "tables/setup"
+// Components: common
+//@import "sprites.less";
+//@import "dropdowns.less";
+//@import "wells.less";
+//@import "component-animations.less";
+//@import "close.less";
+
+// Components: Buttons & Alerts
+// @import "buttons.less";
+// @import "button-groups.less";
+// @import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+//@import "navs.less";
+@import "stylus/navigation/navbar"
+//@import "breadcrumbs.less";
+//@import "pagination.less";
+//@import "pager.less";
+
+// Components: Popovers
+//@import "modals.less";
+//@import "tooltip.less";
+//@import "popovers.less";
+
+// Components: Misc
+//@import "thumbnails.less";
+//@import "labels-badges.less";
+//@import "progress-bars.less";
+//@import "accordion.less";
+//@import "carousel.less";
+//@import "hero-unit.less";
+
+// Utility classes
+//@import "utilities.less"; // Has to be last to override when necessary
+
+// Media queries
+@import "stylus/default/print/default"
+
+// Site settings rewrite
+$textColor = $purple
+
+// Body reset
+// -------------------------
+
+body
+  margin 0
+  font-family $baseFontFamily
+  font-size($baseFontSize, false, true)
+  color $textColor
+  background-color $bodyBackground
+
+
+#logo
+  default-logo(true)
+  html.ie6 &
+    default-logo(false, false, "logoIE6")
+
+
+.g-12
+  background black
+.g-12 div
+  background #ccc
+
+// container
+#mainLayer
+  width 90%
+  margin 0 5%
+  padding 0px 20px
+  background #3c5
+  max-width 1140px
+  min-width 755px
+
+
+hidden()
+  display none
+
+#topLayer
+  #fader
+    background-color #000
+    filter unquote('alpha(opacity=50)')
+    -ms-filter unquote(' alpha(opacity=50)')
+    opacity .5
+    height 100%
+    left 0
+    position fixed
+    top 0
+    width 100%
+    z-index 20
+    hidden()
+
+
+

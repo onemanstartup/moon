@@ -1,0 +1,104 @@
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+body
+  background #335
+
+a.button
+  border-radius 5px
+
+.g
+  background rgba(255,236,0,0.3)
+  float left
+
+.centered
+  margin 0 auto
+
+#fixed-grid
+  width 990px
+.mygrid
+  background green
+  overflow hidden
+  border-top 1px solid rgb(255,236,0)
+  border-bottom 1px solid rgb(255,236,0)
+
+.mygrid div:first-child
+  margin-left 0px !important
+
+.d1,.d2,.d3
+  height 40px
+
+numround(n,d)
+  return floor( ( n * ( 10 ** d ) ) ) / ( 10 ** d )
+/* percentage */
+getMeasurePercentage(num,unit,width)
+  return (num / width * 100)
+
+getMeasureFixed(num,unit,width)
+  return num
+
+even = 1
+golden = 0.61803398 // auron (1:φ)
+halves = 0.5 // hemiolion (2:3)
+thirds = 0.33333333
+diagon = 0.41421356 // 1:√2
+hecton = 0.73205080 // 1:√3
+hemidiagon = 0.11803398 // 1:½√5
+penton = 0.27201964 // 1:√φ
+trion = 0.15470053 // 1:⅔√3
+quadriagon = 0.207 // ?
+biauron = 0.30901699 // 1:2φ
+bipenton = 0.46
+
+
+column(columnNumber, columnsCount, width, gutterWidth, fixed, ratio)
+  if(fixed == true)
+    wid = width - (gutterWidth * (columnsCount - 1))
+    z = iterate(columnNumber, columnsCount, wid, gutterWidth, ratio)
+    w = unit(z,px)
+    m = unit(gutterWidth,px)
+  else
+    wid = 100 - ((getMeasurePercentage(gutterWidth,false,width) * (columnsCount - 1)))
+    z = iterate(columnNumber, columnsCount, wid, gutterWidth,ratio)
+    w = unit(numround(z,8),"%")
+    m = unit(numround(getMeasurePercentage(gutterWidth,false,width),8),"%")
+  width w 
+  margin-left m
+
+iterate(columnNumber, columnsCount , wid, gutterWidth,ratio)
+  adjusted = 0
+  for w in 1..columnsCount
+    wa = numround(wid * (ratio ** w),8)
+    adjusted += wa
+  adjusted = wid / adjusted
+  return numround(wid * (ratio ** columnNumber),8 ) * adjusted
+
+
+renderColumn(a,b,c,d,f,ratio)
+  column(a,b,c,d,f,ratio)
+
+#fixed-grid .d1
+  renderColumn(1,3,990,35,true,even)
+#fixed-grid .d2
+  renderColumn(2,3,990,35,true,even)
+#fixed-grid .d3
+  renderColumn(3,3,990,35,true,even)
+
+#fluid-grid .d1
+  renderColumn(1,12,960,20,false,golden)
+#fluid-grid .d2
+  renderColumn(2,12,960,20,false,golden)
+#fluid-grid .d3
+  renderColumn(3,12,960,20,false,golden)
+#fluid-grid .d4
+  renderColumn(4,12,960,20,false,golden)
+#fluid-grid .d5
+  renderColumn(5,12,960,20,false,golden)
+#fluid-grid .d6
+  renderColumn(6,12,960,20,false,golden)
+#fluid-grid .d7
+  renderColumn(7,12,960,20,false,golden)
+#fluid-grid .d8
+  renderColumn(8,12,960,20,false,golden)
